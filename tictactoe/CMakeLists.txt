@@ -32,6 +32,10 @@ set(PROJECT_SOURCES
                   Board.cpp
                   Board.h
                   common.h
+                  MainWindow.h
+                  MainWindow.cpp
+                  GridButton.h
+                  GridButton.cpp
 )
 
 set(MAIN_SOURCES

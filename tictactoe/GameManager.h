@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Board.h"
+#include "MainWindow.h"
 #include "common.h"
 
 #include <QObject>
@@ -8,11 +9,17 @@
 namespace ttt {
 class GameManager : public QObject {
   Q_OBJECT
+
 public:
-  GameManager(QObject *parent = nullptr);
+  GameManager(MainWindow *mainWindow, QObject *parent = nullptr);
   ~GameManager();
 
-  void SetTurn(const Team team);
+signals:
+  void TurnChanged(const Team team);
+  void CellAssigned(const int row, const int col, const Owner owner);
+
+private slots:
+  void HandleCellAssigned(const int row, const int col, const Owner owner);
 
 private:
   Team CurrentTurn;
